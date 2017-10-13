@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ind.s_ap.monitorwifi"
+    android:versionCode="1"
+    android:versionName="1.1" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <!-- 允许程序访问Wi-Fi网络状态信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 访问网络连接 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 允许程序改变网络连接状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 允许程序改变Wi-Fi连接状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!-- 弹出自定义窗口 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 开机启动app权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- android:theme="@style/AppTheme" -->
+
+    <application
+        android:name="com.ind.s_ap.monitorwifi.app.MyApp"
+        android:allowBackup="true"
+        android:icon="@drawable/wifimgr"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Dialog" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:stateNotNeeded="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 连接WIFI成功触发 -->
+        <receiver android:name="com.ind.s_ap.monitorwifi.broadcast.WifiBroadCast" >
+            <intent-filter>
+                <action android:name="android.net.wifi.RSSI_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.ind.s_ap.monitorwifi.broadcast.BootBroadcastReceiver" >
+            <intent-filter>
+
+                <!-- 注册开机广播地址 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.ind.s_ap.monitorwifi.service.Service1"
+            android:enabled="true"
+            android:exported="false"
+            android:icon="@drawable/wifi"
+            android:process=":service1" >
+        </service>
+        <service
+            android:name="com.ind.s_ap.monitorwifi.service.Service2"
+            android:enabled="true"
+            android:exported="false"
+            android:icon="@drawable/wifi"
+            android:process=":service2" >
+        </service>
+    </application>
+
+</manifest>
