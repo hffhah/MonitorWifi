@@ -10,7 +10,7 @@ import android.content.Intent;
  * @ClassName:BootBroadcastReceiver
  * @Description: 开机自启
  * @author:zihaozhu
- * @date:2016年10月10日 下午5:20:07
+ * @date:2017年10月10日 下午5:20:07
  */
 public class BootBroadcastReceiver extends BroadcastReceiver {
 

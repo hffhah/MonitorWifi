@@ -18,7 +18,7 @@ import android.view.WindowManager;
  * @ClassName:WifiBroadCast
  * @Description: wifi广播监听类
  * @author:zihaozhu
- * @date:2016年10月10日 下午5:20:07
+ * @date:2017年10月10日 下午5:20:07
  */
 public class WifiBroadCast extends BroadcastReceiver {
 	// private final String TAG = this.getClass().getSimpleName();
@@ -30,7 +30,6 @@ public class WifiBroadCast extends BroadcastReceiver {
 	public WifiBroadCast() {
 		super();
 		objectNum++; // 每接收广播一次，生成一个对象。
-		System.out.println("生成WifiBroadCast对象，数量：" + objectNum);
 	}
 
 	@SuppressLint("HandlerLeak")
@@ -95,7 +94,6 @@ public class WifiBroadCast extends BroadcastReceiver {
 		boolean flag = false;
 		WifiAdmin mWifiAdmin = new WifiAdmin(mContext);
 		if (null != mWifiAdmin) {
-			// mWifiAdmin.checkNetCardState();
 			String ssid = mWifiAdmin.getSSID();
 			if (ssid.trim() == "0x")
 				flag = true;

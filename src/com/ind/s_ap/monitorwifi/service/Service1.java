@@ -1,7 +1,7 @@
 package com.ind.s_ap.monitorwifi.service;
 
 import com.ind.s_ap.monitorwifi.utils.CommUtils;
-
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
@@ -12,6 +12,7 @@ import android.os.RemoteException;
 public class Service1 extends Service {
 	private final String startService = "com.lzg.strongservice.service.Service2";
 
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -47,8 +48,6 @@ public class Service1 extends Service {
 
 	@Override
 	public void onCreate() {
-		// Toast.makeText(Service1.this, "Service1������...",
-		// Toast.LENGTH_SHORT).show();
 		startService2();
 
 		new Thread() {

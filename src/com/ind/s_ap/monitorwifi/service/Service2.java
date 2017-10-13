@@ -13,6 +13,7 @@ import android.os.RemoteException;
 public class Service2 extends Service {
 	private final String startService = "com.lzg.strongservice.service.Service1";
 
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -49,8 +50,6 @@ public class Service2 extends Service {
 
 	@SuppressLint("NewApi")
 	public void onCreate() {
-		//Toast.makeText(Service2.this, "Service2 ������..", Toast.LENGTH_SHORT).show();
-
 		startService1();
 
 		new Thread() {
